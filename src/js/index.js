@@ -11,7 +11,7 @@ const query = async function () {
               let genreArr = [];
               const addGenre = function () {
                 genres.forEach((element) => {
-                  if(movie.genres_ids.includes(element.id)) {
+                  if (movie.genre_ids.includes(element.id)) {
                     genreArr.push(element.name);
                     return genreArr;
                   }
