@@ -8,6 +8,17 @@ const query = async function () {
             const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=18ca08a178a597d73d05fe945063ba79&language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&vote_count.gte=4000&vote_average.gte=8`);
             const data = await response.json();
             data.results.forEach((movie) => {
+              let genreArr = [];
+              const addGenre = function () {
+                genres.forEach((element) => {
+                  if(movie.genres_ids.includes(element.id)) {
+                    genreArr.push(element.name);
+                    return genreArr;
+                  }
+                });
+              };
+              addGenre();
+              
                 DOMSelectors.grid.insertAdjacentHTML("beforeend", 
                 `<div class="movie-card">
                 <div class="movie-card-front">
@@ -30,9 +41,7 @@ const query = async function () {
                   </div>
         
                   <div class="movie-genres">
-                    <li class="movie-genre">Sci-Fi</li>
-                    <li class="movie-genre">Fantasy</li>
-                    <li class="movie-genre">Horror</li>
+                    ${genreArr}
                   </div>
                 </div>
               </div>`
