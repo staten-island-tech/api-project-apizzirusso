@@ -5,7 +5,7 @@ const key = "18ca08a178a597d73d05fe945063ba79";
 
 const query = async function () {
         try {
-            const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=18ca08a178a597d73d05fe945063ba79&language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&vote_count.gte=4000&vote_average.gte=8`);
+            const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=18ca08a178a597d73d05fe945063ba79&language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=10&vote_count.gte=4000&vote_average.gte=8`);
             const data = await response.json();
             data.results.forEach((movie) => {
               let genreArr = [];
